@@ -1,0 +1,43 @@
+<div class="container p-4">
+  <div>
+    <h2>Bancos disponibles</h2>
+
+    <div *ngIf="isLoading" class="loading-indicator">
+      <div class="spinner"></div>
+      <span>Conectando con el banco...</span>
+    </div>
+
+    <div *ngIf="banks$ | async as banks; else loading">
+      <div class="banks-grid">
+        <div
+          *ngFor="let bank of banks"
+          (click)="selectBank(bank)"
+          class="bank-card"
+        >
+          <div class="flex items-center mb-2">
+            <img 
+              *ngIf="bank.logo" 
+              [src]="bank.logo" 
+              alt="{{ bank.name }} logo" 
+              class="h-8 w-8 mr-2"
+            >
+            <div *ngIf="!bank.logo" class="h-8 w-8 bg-gray-200 rounded-full flex items-center justify-center mr-2">
+              <span class="text-gray-500">{{ bank.name.charAt(0) }}</span>
+            </div>
+            <h3 class="text-lg font-semibold">{{ bank.name }}</h3>
+          </div>
+          <p class="text-sm text-gray-600">{{ bank.country }}</p>
+          <p class="text-xs text-gray-400">Tipo: {{ bank.type }}</p>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #loading>
+      <p class="loading">Cargando bancos...</p>
+    </ng-template>
+    
+    <div *ngIf="errorMessage" class="error-message mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

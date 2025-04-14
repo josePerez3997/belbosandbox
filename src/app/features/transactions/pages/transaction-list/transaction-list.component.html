@@ -1,0 +1,40 @@
+<div class="transaction-page">
+  <section class="summary">
+    <h2>Resumen financiero</h2>
+    <div class="summary__kpis">
+      <div class="summary__kpi">
+        <p class="label">Balance</p>
+        <p class="value">{{ balance | currency:'USD' }}</p>
+      </div>
+      <div class="summary__kpi ingreso">
+        <p class="label">Ingresos</p>
+        <p class="value">{{ ingresos | currency:'USD' }}</p>
+      </div>
+      <div class="summary__kpi egreso">
+        <p class="label">Egresos</p>
+        <p class="value">{{ egresos | currency:'USD' }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dashboard-content">
+    <div class="chart">
+      <canvas id="transactionsChart"></canvas>
+    </div>
+
+    <section class="movements">
+      <h3>Movimientos recientes</h3>
+      <ul class="movements__list">
+        <li *ngFor="let tx of transactions$ | async" class="movements__item">
+          <div class="movements__details">
+            <p class="description">{{ tx.description }}</p>
+            <p class="date">{{ tx.date }}</p>
+          </div>
+          <p class="amount" [ngClass]="{ 'ingreso': tx.amount > 0, 'egreso': tx.amount < 0 }">
+            {{ tx.amount | currency:'USD' }}
+          </p>
+        </li>
+      </ul>
+    </section>
+  </section>
+</div>

@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.account-list {
+    font-family: 'Inter', sans-serif;
+    padding: 2rem;
+
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: #1e293b;
+    }
+
+    .bank-info {
+        background: #eff6ff;
+        border-left: 4px solid #3b82f6;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        margin-bottom: 1.5rem;
+
+        h3 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #1e3a8a;
+        }
+
+        p {
+            margin: 0;
+            color: #334155;
+        }
+
+        span {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+    }
+
+    .loading-state {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 120px;
+        gap: 0.75rem;
+
+        .spinner {
+            border: 3px solid #cbd5e1;
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            animation: spin 0.8s linear infinite;
+        }
+
+        p {
+            color: #64748b;
+        }
+    }
+
+    .error-message {
+        background: #fee2e2;
+        border: 1px solid #fca5a5;
+        color: #b91c1c;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        margin-bottom: 1rem;
+
+        strong {
+            font-weight: 600;
+        }
+
+        span {
+            margin-left: 0.5rem;
+        }
+    }
+
+    .account-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .account-card {
+        background: #ffffff;
+        padding: 1.25rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .account-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            h3 {
+                font-size: 1rem;
+                font-weight: 600;
+                margin: 0;
+                color: #0f172a;
+            }
+
+            p {
+                font-size: 0.875rem;
+                color: #475569;
+                margin-top: 0.25rem;
+            }
+
+            .balance {
+                text-align: right;
+
+                p {
+                    font-weight: 600;
+                    font-size: 1rem;
+                    margin: 0;
+                }
+
+                span {
+                    font-size: 0.75rem;
+                    color: #94a3b8;
+                }
+
+                .positive {
+                    color: #16a34a;
+                }
+
+                .negative {
+                    color: #dc2626;
+                }
+
+                .neutral {
+                    color: #64748b;
+                }
+            }
+        }
+    }
+
+    .no-accounts {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: #94a3b8;
+        font-size: 1rem;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,7 @@
+<form [formGroup]="form" (ngSubmit)="onLogin()">
+    <h2>Login</h2>
+    <input formControlName="email" placeholder="Email" type="email" />
+    <input formControlName="password" placeholder="Password" type="password" />
+    <button type="submit">Login</button>
+    <p>No tienes cuenta? <a style="cursor: pointer;" routerLink="/auth/register">Regístrate</a></p>
+</form>
