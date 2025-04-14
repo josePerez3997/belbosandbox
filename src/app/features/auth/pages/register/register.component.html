@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="image-side">
+      <img src="assets/images/register.webp" alt="Register Illustration" />
+    </div>
+  
+    <form [formGroup]="form" (ngSubmit)="onRegister()">
+      <h2>Registro</h2>
+  
+      <div class="form-group">
+        <i class="fa fa-envelope"></i>
+        <input formControlName="email" type="email" placeholder="Tu Email" />
+      </div>
+  
+      <div class="form-group">
+        <i class="fa fa-lock"></i>
+        <input formControlName="password" type="password" placeholder="Contraseña" />
+      </div>
+  
+      <button type="submit">Registrarse</button>
+  
+      <p>¿Ya tienes cuenta? <a style="cursor: pointer;" routerLink="/auth/login">Inicia sesión</a></p>
+    </form>
+</div>
+  

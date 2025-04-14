@@ -1,0 +1,54 @@
+<div class="account-list">
+  <h2>Cuentas bancarias</h2>
+
+  <div *ngIf="selectedBank" class="bank-info">
+    <h3>Banco seleccionado:</h3>
+    <p>
+      {{ selectedBank.name }}
+      <span *ngIf="selectedBank.country">({{ selectedBank.country }})</span>
+    </p>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Cargando cuentas...</p>
+  </div>
+
+  <div *ngIf="errorMessage && !isLoading" class="error-message">
+    <strong>Error:</strong>
+    <span>{{ errorMessage }}</span>
+  </div>
+
+  <ng-container *ngIf="!isLoading && !errorMessage">
+    <div *ngIf="(accounts$ | async) as accounts">
+      <div *ngIf="accounts.length > 0; else noAccounts">
+        <ul class="account-grid">
+          <li *ngFor="let acc of accounts" style="cursor: pointer;" class="account-card" (click)="goToTransactions(acc.id)">
+            <div class="account-details">
+              <div>
+                <h3>{{ acc.name || 'Cuenta sin nombre' }}</h3>
+                <p>{{ acc.number || acc.id || 'Sin número' }}</p>
+              </div>
+              <div class="balance">
+                <p [ngClass]="{
+                    'positive': acc.balance && acc.balance.current > 0,
+                    'negative': acc.balance && acc.balance.current < 0,
+                    'neutral': !acc.balance || acc.balance.current === 0
+                }">
+                  {{ acc.balance?.current | currency:(acc.currency || 'USD'):'symbol':'1.2-2' }}
+                </p>
+                <span>{{ acc.currency || 'USD' }}</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #noAccounts>
+    <div class="no-accounts">
+      <p>No se encontraron cuentas para este banco.</p>
+    </div>
+  </ng-template>
+</div>

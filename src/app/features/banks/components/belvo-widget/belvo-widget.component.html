@@ -1,0 +1,10 @@
+<div class="widget-container">
+    <div *ngIf="isLoading" class="loading">
+      <p>Cargando widget...</p>
+    </div>
+    <div *ngIf="errorMessage" class="error">
+      <p>{{ errorMessage }}</p>
+      <button (click)="retry()">Reintentar</button>
+    </div>
+    <div id="belvo"></div>
+</div>

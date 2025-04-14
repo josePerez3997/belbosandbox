@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:host {
+    font-family: 'Inter', sans-serif;
+    padding: 2rem;
+
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: #1e293b;
+    }
+
+    .banks-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .bank-card {
+        background: #ffffff;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+
+            img {
+                height: 2rem;
+                width: 2rem;
+                object-fit: contain;
+                margin-right: 0.75rem;
+                border-radius: 50%;
+                background: #f1f5f9;
+                padding: 0.25rem;
+            }
+
+            .placeholder {
+                height: 2rem;
+                width: 2rem;
+                border-radius: 50%;
+                background-color: #e2e8f0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 0.75rem;
+
+                span {
+                    font-size: 0.875rem;
+                    color: #64748b;
+                }
+            }
+
+            h3 {
+                font-size: 1rem;
+                font-weight: 600;
+                color: #0f172a;
+                margin: 0;
+            }
+        }
+
+        p {
+            margin: 0.2rem 0;
+            color: #475569;
+
+            &.text-sm {
+                font-size: 0.875rem;
+            }
+
+            &.text-xs {
+                font-size: 0.75rem;
+                color: #94a3b8;
+            }
+        }
+    }
+
+    .loading {
+        color: #64748b;
+        font-style: italic;
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+        .banks-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}

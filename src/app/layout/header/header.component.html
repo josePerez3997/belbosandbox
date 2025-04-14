@@ -1,0 +1,26 @@
+<header>
+  <div class="container">
+    <h1>Belvo Finance App</h1>
+
+    <button class="menu-toggle" (click)="toggleMenu()">
+      ☰
+    </button>
+
+    <nav [class.open]="menuOpen">
+      <ul>
+        <li>
+          <a routerLink="/banks" routerLinkActive="active">Bancos</a>
+        </li>
+        <li>
+          <a routerLink="/accounts" routerLinkActive="active">Cuentas</a>
+        </li>
+        <li>
+          <a routerLink="/transactions" routerLinkActive="active">Transacciones</a>
+        </li>
+        <li>
+          <button (click)="logout()">Salir</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
